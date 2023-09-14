@@ -12,22 +12,27 @@ type Category {
 type Product {
   id: ID!
   name: String!
-  category: String!
+  category: Category!
 }
 
 type Query {
   categories: [Category!]!
-  products(categoryId: String!): [Product!]!
-  product(id: String!): Product!
+  products(categoryId: Float!): [Product!]!
+  product(id: Float!): Product!
 }
 
 type Mutation {
+  addCategory(category: CategoryDTO!): Category!
   addProduct(product: ProductDTO!): Product!
-  updateProduct(id: String!, product: ProductDTO!): Product!
-  removeProduct(id: String!): Boolean!
+  updateProduct(id: Float!, product: ProductDTO!): Product!
+  removeProduct(id: Float!): Boolean!
+}
+
+input CategoryDTO {
+  name: String!
 }
 
 input ProductDTO {
   name: String!
-  category: String!
+  category: Float!
 }

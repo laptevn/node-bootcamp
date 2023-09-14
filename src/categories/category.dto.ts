@@ -1,10 +1,7 @@
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class ProductDTO {
+export class CategoryDTO {
     @Field()
     name: string;
-
-    @Field()
-    category: number;
 }

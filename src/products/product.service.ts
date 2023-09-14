@@ -1,30 +1,39 @@
 import {Injectable} from '@nestjs/common';
-import {ProductRepository} from "./product.repository";
 import {Product} from "./product.model";
 import {ProductDTO} from "./product.dto";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {ProductEntity} from "./product.etity";
 
 @Injectable()
 export class ProductService {
-    constructor(private readonly productRepository: ProductRepository) {
+    constructor(@InjectRepository(ProductEntity) private readonly productRepository: Repository<ProductEntity>) {
     }
 
-    async getProducts(categoryId: string): Promise<Product[]> {
-        return this.productRepository.findAll(categoryId);
+    async getProducts(categoryId: number): Promise<Product[]> {
+        return this.productRepository.find({where: {category: {id: categoryId}}});
     }
 
-    async getProduct(id: string): Promise<Product> {
-        return this.productRepository.find(id);
+    async getProduct(id: number): Promise<Product> {
+        return this.productRepository.findOneBy({id});
     }
 
     async createProduct(productDTO: ProductDTO): Promise<Product> {
-        return this.productRepository.create(productDTO);
+        return this.productRepository.save({
+            name: productDTO.name,
+            category: {id: productDTO.category}
+        });
     }
 
-    async updateProduct(id: string, productDTO: ProductDTO): Promise<Product> {
-        return this.productRepository.update(id, productDTO);
+    async updateProduct(id: number, productDTO: ProductDTO): Promise<Product> {
+        await this.productRepository.update(id, {
+            name: productDTO.name,
+            category: {id: productDTO.category}
+        });
+        return this.getProduct(id);
     }
 
-    async removeProduct(id: string): Promise<void> {
-        await this.productRepository.remove(id);
+    async removeProduct(id: number): Promise<void> {
+        await this.productRepository.delete(id);
     }
 }

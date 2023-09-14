@@ -14,12 +14,12 @@ export class ProductResolver {
     }
 
     @Query(returns => [Product])
-    products(@Args('categoryId') categoryId: string): Promise<Product[]> {
+    products(@Args('categoryId') categoryId: number): Promise<Product[]> {
         return this.productService.getProducts(categoryId);
     }
 
     @Query(returns => Product)
-    async product(@Args('id') id: string): Promise<Product> {
+    async product(@Args('id') id: number): Promise<Product> {
         const product = await this.productService.getProduct(id);
         if (!product) {
             throw new NotFoundException(id);
@@ -33,7 +33,7 @@ export class ProductResolver {
     }
 
     @Mutation(returns => Product)
-    async updateProduct(@Args('id') id: string, @Args('product') productDTO: ProductDTO): Promise<Product> {
+    async updateProduct(@Args('id') id: number, @Args('product') productDTO: ProductDTO): Promise<Product> {
         const product = await this.productService.updateProduct(id, productDTO);
         if (!product) {
             throw new NotFoundException(id);
@@ -42,7 +42,7 @@ export class ProductResolver {
     }
 
     @Mutation(returns => Boolean)
-    async removeProduct(@Args('id') id: string): Promise<Boolean> {
+    async removeProduct(@Args('id') id: number): Promise<Boolean> {
         await this.productService.removeProduct(id);
         return true;
     }
