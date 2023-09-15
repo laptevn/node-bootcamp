@@ -15,10 +15,16 @@ type Product {
   category: Category!
 }
 
+"""token"""
+type Token {
+  access_token: String!
+}
+
 type Query {
   categories: [Category!]!
   products(categoryId: Float!): [Product!]!
   product(id: Float!): Product!
+  signIn(name: String!, password: String!): Token!
 }
 
 type Mutation {

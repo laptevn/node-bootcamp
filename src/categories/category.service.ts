@@ -3,8 +3,6 @@ import {Category} from "./category.model";
 import {InjectRepository} from "@nestjs/typeorm";
 import {CategoryEntity} from "./category.entity";
 import {Repository} from "typeorm";
-import {ProductDTO} from "../products/product.dto";
-import {Product} from "../products/product.model";
 import {CategoryDTO} from "./category.dto";
 
 @Injectable()

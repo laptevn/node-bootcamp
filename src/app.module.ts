@@ -4,12 +4,13 @@ import {GraphQLModule} from "@nestjs/graphql";
 import {CategoryModule} from "./categories/category.module";
 import {ProductModule} from "./products/product.module";
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {CategoryEntity} from "./categories/category.entity";
+import {AuthModule} from "./auth/auth.module";
 
 @Module({
     imports: [
         CategoryModule,
         ProductModule,
+        AuthModule,
         GraphQLModule.forRoot<ApolloDriverConfig>({
             driver: ApolloDriver,
             autoSchemaFile: 'src/schema.gql'
