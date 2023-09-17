@@ -10,7 +10,13 @@
 			"name": "add category",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ3NjI3NzIsImV4cCI6MTY5NDc2ODc3Mn0.0NCzhWwrm5y_AhX99YTld5vmF5a4Ugg4j4Sf6ZWDMy0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
@@ -36,7 +42,13 @@
 			"name": "get all categories",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ3NjI3NzIsImV4cCI6MTY5NDc2ODc3Mn0.0NCzhWwrm5y_AhX99YTld5vmF5a4Ugg4j4Sf6ZWDMy0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
@@ -62,11 +74,17 @@
 			"name": "get products by category",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiY3VzdG9tZXIiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2OTQ3NjM5MzMsImV4cCI6MTY5NDc2OTkzM30.WLICLgeuWvhsZkKX80ZID5x7Hderr_EJfMpyCab9gLE",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n    products(categoryId: 2) {\n        name,\n        category {\n            id,\n            name\n        }\n    }\n}",
+						"query": "query {\n    products(categoryId: 1) {\n        name\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -92,7 +110,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n    products(categoryId: 2) {\n        name,\n        category {\n            id,\n            name\n        }\n    }\n}",
+						"query": "query {\n    signIn(name: \"customer\", password: \"customer\") {\n        access_token\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -114,11 +132,17 @@
 			"name": "get product by id",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ3NjI3NzIsImV4cCI6MTY5NDc2ODc3Mn0.0NCzhWwrm5y_AhX99YTld5vmF5a4Ugg4j4Sf6ZWDMy0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n    product(id: 2) {\n        name\n    }\n}",
+						"query": "query {\n    product(id: 6) {\n        name\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -140,12 +164,18 @@
 			"name": "add product",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiY3VzdG9tZXIiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2OTQ3NjM5MzMsImV4cCI6MTY5NDc2OTkzM30.WLICLgeuWvhsZkKX80ZID5x7Hderr_EJfMpyCab9gLE",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
 						"query": "mutation CreateProduct($product: ProductDTO!) {\n  addProduct(product: $product) {\n    id,\n    name,\n    category {\n        id\n    }\n  }\n}",
-						"variables": "{\n    \"product\": {\n        \"name\": \"new product\",\n        \"category\": 1\n    }\n}"
+						"variables": "{\n    \"product\": {\n        \"name\": \"DEMO\",\n        \"category\": 1\n    }\n}"
 					}
 				},
 				"url": {
@@ -166,12 +196,18 @@
 			"name": "update product",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ3NjI3NzIsImV4cCI6MTY5NDc2ODc3Mn0.0NCzhWwrm5y_AhX99YTld5vmF5a4Ugg4j4Sf6ZWDMy0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation UpdateProduct($product: ProductDTO!) {\n  updateProduct(id: 2, product: $product) {\n    id,\n    name\n  }\n}",
-						"variables": "{\n    \"product\": {\n        \"name\": \"new product 2\",\n        \"category\": 1\n    }\n}"
+						"query": "mutation UpdateProduct($product: ProductDTO!) {\n  updateProduct(id: 6, product: $product) {\n    id,\n    name\n  }\n}",
+						"variables": "{\n    \"product\": {\n        \"name\": \"SUPER DEMO\",\n        \"category\": 1\n    }\n}"
 					}
 				},
 				"url": {
@@ -192,11 +228,17 @@
 			"name": "remove product",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ3NjI3NzIsImV4cCI6MTY5NDc2ODc3Mn0.0NCzhWwrm5y_AhX99YTld5vmF5a4Ugg4j4Sf6ZWDMy0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  removeProduct(id: 2)\n}",
+						"query": "mutation {\n  removeProduct(id: 6)\n}",
 						"variables": ""
 					}
 				},
